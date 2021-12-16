@@ -1,0 +1,14 @@
+"Games"
+{
+	"tf"
+	{
+		"Offsets"
+		{
+			"CTFGameMovement::CheckJumpButton"
+			{
+				"linux" "30"
+				"windows" "29"
+			}
+		}
+	}
+}
