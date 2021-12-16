@@ -5,7 +5,7 @@
 #include <sdktools>
 #include <dhooks>
 
-#define PLUGIN_VERSION "1.0.0"
+#define PLUGIN_VERSION "1.0.1"
 
 public Plugin myinfo =
 {
@@ -15,9 +15,6 @@ public Plugin myinfo =
   version = PLUGIN_VERSION,
   url = "https://osyu.sh/"
 }
-
-Handle hCheckJumpButtonPre;
-Handle hCheckJumpButtonPost;
 
 public void OnPluginStart()
 {
@@ -37,8 +34,8 @@ public void OnPluginStart()
   int offset = GameConfGetOffset(hCfgFile, "CTFGameMovement::CheckJumpButton");
   hCfgFile.Close();
 
-  hCheckJumpButtonPre = DHookCreate(offset, HookType_Raw, ReturnType_Void, ThisPointer_Address, CheckJumpButtonPre);
-  hCheckJumpButtonPost = DHookCreate(offset, HookType_Raw, ReturnType_Void, ThisPointer_Address, CheckJumpButtonPost);
+  Handle hCheckJumpButtonPre = DHookCreate(offset, HookType_Raw, ReturnType_Void, ThisPointer_Address, CheckJumpButtonPre);
+  Handle hCheckJumpButtonPost = DHookCreate(offset, HookType_Raw, ReturnType_Void, ThisPointer_Address, CheckJumpButtonPost);
   DHookRaw(hCheckJumpButtonPre, false, pGameMovement);
   DHookRaw(hCheckJumpButtonPost, true, pGameMovement);
 }
